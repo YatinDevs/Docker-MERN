@@ -83,8 +83,13 @@ function App() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/favourites" className="nav-link">
+                <Link to="/admin" className="nav-link">
                   Favourites
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/admin" className="nav-link">
+                  About Us
                 </Link>
               </li>
             </ul>
