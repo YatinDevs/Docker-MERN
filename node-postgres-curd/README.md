@@ -1,4 +1,4 @@
-# Initial Setup
+# initial Setup
 
 - npm init
 - npm i express pg sequelize
@@ -14,7 +14,7 @@
 
 # creating Index.js
 
-# Dockerize :
+# dockerize :
 
 - Create files :
   - .dockerignore
@@ -26,3 +26,19 @@
 - postgres container,
 - build node app
 - run the container app
+
+# run
+
+- docker compose up -d node_db
+
+# you can use TablePlus :
+
+- https://tableplus.com/download
+- to crosscheck postgres -> node_live_db
+
+# lets build image based on our application
+
+- docker compose build
+- docker compose up --build
+
+# tryout Endpoints on Postman for CRUD

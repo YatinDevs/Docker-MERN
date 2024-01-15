@@ -1,0 +1,63 @@
+# specify the version of docker-compose
+version: "3.8"
+
+# define the services/containers to be run
+services:
+  # define the api service/container
+  node_app:
+    # api service depends on the db service so the db service will be started before the api service
+    container_name: node_app
+    # specify the build context for the api service
+    build: .
+    image: yatindevs/node_live_app
+    # specify the ports to expose for the api service
+    # the first number is the port on the host machine
+    # the second number is the port inside the container
+    ports:
+      - "3000:3000"
+
+    # specify environment variables for the api service
+    # for demo purposes, we're using a local mongodb instance
+    environment:
+      - PG_DB=node_live_db
+      - PG_USER=yatindevs
+      - PG_PASSWORD=12345
+      - PG_HOST=node_db
+    depends_on:
+      - node_db
+    restart: always
+
+    # establish docker compose watch mode for the api service
+    develop:
+      # specify the files to watch for changes
+      watch:
+        # it'll watch for changes in package.json and package-lock.json and rebuild the container and image if there are any changes
+        - path: ./node_postgres_crud/package.json
+          action: rebuild
+        - path: ./node_postgres_crud/package-lock.json
+          action: rebuild
+
+        # it'll watch for changes in the backend directory and sync the changes with the container real time
+        - path: ./node_postgres_crud
+          target: /app
+          action: sync
+
+  # define the db service
+  # define the db service
+  node_db:
+    container_name: node_db
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=node_live_db
+      - POSTGRES_USER=yatindevs
+      - POSTGRES_PASSWORD=12345
+    volumes:
+      - type: volume
+        source: node_db_data
+        target: /var/lib/postgresql/data
+
+# define the volumes to be used by the services
+volumes:
+  node_db_data:

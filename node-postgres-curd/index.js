@@ -1,11 +1,22 @@
 // configure required modules
+const cors = require("cors"); // consume cors similar to middle ware
 const express = require("express");
 const bodyparser = require("body-parser");
 const sequelize = require("./utils/db");
 const User = require("./models/users");
+const morgan = require("morgan");
 
 // app server created
 const app = express();
+
+// built-in middlewares:
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(express.json()); // body_parser -> converts JSON data
+app.use(morgan("dev")); // logs
 
 // when we get Http request
 // help to parse body which is json
