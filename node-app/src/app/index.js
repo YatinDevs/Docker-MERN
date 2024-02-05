@@ -1,5 +1,3 @@
-function main(){
-    console.log('hello World');
-}
+const {AppStarter} = require('./domain/startup')
 
-main();
+AppStarter.startServices()
