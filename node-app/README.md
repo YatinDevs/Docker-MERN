@@ -19,10 +19,19 @@ Step 2 - Setting Up our Configuration file :
     - Add env file
     - Add basic config
     - Add app starter
-
+        npm i dotenv
 
 Step 3 - Testing our config :
 
     - Set up jest for unit tests
     - Add unit tests for config
     - Add unit tests for startup
+        npm i jest
+
+Step 4 - Setting Up a Http Server :
+
+    - Add Http Server
+    - Add to App Starter
+        npm i express
+        npm i cors
+        npm i body-parser

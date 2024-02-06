@@ -4,6 +4,7 @@
   "description": "Node-Application Setup ",
   "main": "index.js",
   "scripts": {
+    "unit-test": "jest --runInBand --coverage --verbose -c jest.unit.config.js",
     "start": "node index.js",
     "dev" : "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
