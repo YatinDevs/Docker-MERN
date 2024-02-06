@@ -1,4 +1,5 @@
 const { validateEnvProvidedConfig } = require(".")
+jest.mock('../logger');
 
 describe("Config",()=>{
     describe("validateEnvProvidedConfig",()=>{

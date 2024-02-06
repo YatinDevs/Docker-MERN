@@ -40,3 +40,11 @@ Step 5-  Testing our HTTP server start()
 
     - Testing out HTTP server start()
     - Extending our AppStarter Tests
+
+
+Step 6 - Adding Logging to our API
+       
+    - Add winston(library)
+    - Configure our logger
+    - Apply the new logger to our current code.
+        npm i winston

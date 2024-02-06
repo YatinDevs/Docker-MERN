@@ -2,19 +2,19 @@
 
 const { validateEnvProvidedConfig } = require("../config");
 const { AppHttpServer } = require("../http-server");
-
+const {logger} = require('../logger')
 
 class AppStarter{
     static async startServices(){
-        console.log('Preparing enviornment variables...')
+        logger.info('Preparing enviornment variables...')
         
         validateEnvProvidedConfig();
 
-        console.log('Starting services for application');
+        logger.info('Starting services for application');
 
         await AppHttpServer.start()
         
-        console.log('All services started for application successfully!!')
+        logger.info('All services started for application successfully!!')
     }
 }
 
